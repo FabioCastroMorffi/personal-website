@@ -52,7 +52,7 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
 .arrow { margin-right: 0.4em; }
 
-nav { 
+nav {
       color: var(--muted);
       color: var(--text); 
     }
@@ -62,14 +62,20 @@ nav .sep { margin: 0 0.4em; }
 footer {
   display: flex;
   overflow: hidden;
+  padding: 12px 0;
   margin-top: 0.8em;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 14px;
   overflow-anchor: none;
-  scroll-behavior: auto;
 }
 
 footer > * { flex-shrink: 0; }
+
+footer #symbol {
+  filter: brightness(0) invert(1);
+  transform: translateY(-20px);
+  box-sizing: content-box;
+}
 
 @media (max-width: 480px) {
   main { padding-top: 4rem; }
