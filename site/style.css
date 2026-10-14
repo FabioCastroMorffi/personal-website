@@ -60,12 +60,16 @@ nav {
 nav .sep { margin: 0 0.4em; }
 
 footer {
+  display: flex;
   overflow: hidden;
   margin-top: 0.8em;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
+  overflow-anchor: none;
+  scroll-behavior: auto;
 }
+
+footer > * { flex-shrink: 0; }
 
 @media (max-width: 480px) {
   main { padding-top: 4rem; }
