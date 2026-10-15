@@ -1,7 +1,7 @@
 const f = document.querySelector("footer");
-const sym_image = document.querySelector("#symbol");
 
-const RAW = "https://raw.githubusercontent.com/chris-pikul/electronic-symbols/main";
+const RAW =
+  "https://raw.githubusercontent.com/chris-pikul/electronic-symbols/main";
 let manifest;
 
 const todayKey = () => new Date().toLocaleDateString("en-CA"); // YYYY-MM-DD, local time
@@ -20,6 +20,16 @@ async function symbolOfTheDay(format = "SVG") {
   return { ...s, url: `${RAW}/${format}/${base}.${format.toLowerCase()}` };
 }
 
+// updates every copy, since the ticker clones the figure
+function renderSymbol(symbol) {
+  for (const fig of f.querySelectorAll(".symbol-item")) {
+    const img = fig.querySelector("img");
+    img.setAttribute("src", symbol.url);
+    img.alt = symbol.name;
+    fig.querySelector("figcaption").textContent = symbol.name;
+  }
+}
+
 async function showSymbol() {
   try {
     const today = todayKey();
@@ -30,21 +40,26 @@ async function showSymbol() {
       localStorage.setItem("symbolOfTheDay", JSON.stringify(saved));
     }
 
-    sym_image.setAttribute("src", saved.symbol.url);
-    sym_image.alt = saved.symbol.name;
+    renderSymbol(saved.symbol);
   } catch (err) {
     console.error("symbol load failed:", err);
   }
 }
 
 function startTicker() {
+  let paused = false;
+  f.addEventListener("click", (e) => {
+    if (e.target.closest("a")) return;
+    paused = !paused;
+  });
+
   const items = [...f.children];
   while (f.scrollWidth < f.clientWidth * 2) {
     f.append(...items.map((el) => el.cloneNode(true)));
   }
 
   (function tick() {
-    if (f.matches(":hover")) {
+    if (f.matches(":hover") && !paused) {
       f.scrollLeft += 1;
       const first = f.firstElementChild;
       const w = first.nextElementSibling.offsetLeft - first.offsetLeft;

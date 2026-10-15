@@ -71,10 +71,24 @@ footer {
 
 footer > * { flex-shrink: 0; }
 
-footer #symbol {
+.symbol-item {
+  width: 88px;
+  text-align: center;
+}
+
+.symbol-item img {
+  display: block;
+  object-fit: contain;
   filter: brightness(0) invert(1);
   transform: translateY(-20px);
   box-sizing: content-box;
+}
+
+.symbol-item figcaption {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: var(--text);
+  margin-top: 0.3em;
 }
 
 @media (max-width: 480px) {
