@@ -65,6 +65,7 @@ footer {
   padding: 12px 0;
   margin-top: 0.8em;
   justify-content: flex-start;
+  align-items: flex-start;
   gap: 14px;
   overflow-anchor: none;
 }
