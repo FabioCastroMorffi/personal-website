@@ -5,18 +5,34 @@
   --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { font-size: 16px; }
+html {
+  font-size: 16px;
+  background-color: var(--bg);
+}
 
 body {
-  background: var(--bg);
   color: var(--text);
   font-family: var(--font);
   font-size: 1rem;
   line-height: 1.6;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  inset: 0;
+  position: fixed;
+  background: url("./assets/nix-logo.png") no-repeat center center / cover
+    fixed;
+  opacity: 0.005;
+  z-index: -1;
 }
 
 main {
@@ -31,9 +47,17 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-.hi   { font-size: 3.5rem; letter-spacing: -0.03em; }
-.im   { font-size: 1.75rem; }
-.name { font-size: 3.5rem; letter-spacing: -0.03em; }
+.hi {
+  font-size: 3.5rem;
+  letter-spacing: -0.03em;
+}
+.im {
+  font-size: 1.75rem;
+}
+.name {
+  font-size: 3.5rem;
+  letter-spacing: -0.03em;
+}
 
 p {
   margin-bottom: 1.5rem;
@@ -47,17 +71,26 @@ a {
   text-decoration-color: var(--muted);
   text-underline-offset: 3px;
 }
-a:hover { text-decoration-color: var(--text); }
-a:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+a:hover {
+  text-decoration-color: var(--text);
+}
+a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
 
-.arrow { margin-right: 0.4em; }
+.arrow {
+  margin-right: 0.4em;
+}
 
 nav {
-      color: var(--muted);
-      color: var(--text); 
-    }
+  color: var(--muted);
+  color: var(--text);
+}
 
-nav .sep { margin: 0 0.4em; }
+nav .sep {
+  margin: 0 0.4em;
+}
 
 footer {
   display: flex;
@@ -70,7 +103,9 @@ footer {
   overflow-anchor: none;
 }
 
-footer > * { flex-shrink: 0; }
+footer > * {
+  flex-shrink: 0;
+}
 
 .symbol-item {
   width: 88px;
@@ -93,6 +128,10 @@ footer > * { flex-shrink: 0; }
 }
 
 @media (max-width: 480px) {
-  main { padding-top: 4rem; }
-  .name { font-size: 2.75rem; }
+  main {
+    padding-top: 4rem;
+  }
+  .name {
+    font-size: 2.75rem;
+  }
 }
